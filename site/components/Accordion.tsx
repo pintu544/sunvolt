@@ -21,7 +21,8 @@ export default function Accordion({
   items: AccordionItem[];
 }) {
   const dispatch = useAppDispatch();
-  const open = useAppSelector((s) => s.accordion[id] ?? 0);
+  const stored = useAppSelector((s) => s.accordion[id]);
+  const open = stored === undefined ? 0 : stored;
 
   return (
     <section className="mx-auto max-w-[1600px] px-[3%] py-[clamp(3rem,3.125vw,3.75rem)]">
