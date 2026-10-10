@@ -53,7 +53,8 @@ const accordionSlice = createSlice({
   initialState: {} as Record<string, number | null>,
   reducers: {
     toggleItem: (s, a: PayloadAction<{ id: string; index: number }>) => {
-      s[a.payload.id] = s[a.payload.id] === a.payload.index ? null : a.payload.index;
+      const cur = s[a.payload.id] ?? 0;
+      s[a.payload.id] = cur === a.payload.index ? null : a.payload.index;
     },
   },
 });

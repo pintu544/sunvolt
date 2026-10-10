@@ -16,22 +16,22 @@
       adversarial QA subagent pass; Pintu reviews in browser.
 
 ## Slice 2 — Solution pages (shared template)
-- [ ] T6: Solution template: hero (left text, dot pagination), accordion (5 items),
+- [x] T6: Solution template: hero (left text, dot pagination), accordion (5 items),
       scenario tabs, product carousel, news cards, contact form (validation + success).
       Done = C&I page complete per research.md.
-- [ ] T7: Residential page via same template with its content set.
+- [x] T7: Residential page via same template with its content set.
       Done = route renders, all interactives work, no template leakage (C&I copy).
-- [ ] T8: Slice-2 QA: screenshots @4 widths both pages; adversarial QA; Pintu review.
+- [x] T8: Slice-2 QA: screenshots @4 widths both pages; adversarial QA; Pintu review.
 
 ## Slice 3 — Brand Story + Sustainability
-- [ ] T9: Brand story: video-hero placeholder, mission/vision accordion + splits,
+- [x] T9: Brand story: video-hero placeholder, mission/vision accordion + splits,
       glass milestone timeline carousel, decade tabs, awards, news.
       Done = glass cards (blur, #3F3F60/30, radius 30) match spec.
-- [ ] T10: Sustainability: hero, sticky sub-nav (anchor scroll), climate target cards,
+- [x] T10: Sustainability: hero, sticky sub-nav (anchor scroll), climate target cards,
       5-pillar strategy tabs + stats band, reports tabs + download cards (decorative),
       awards carousel, news, ESG contact.
       Done = sticky nav highlights active section on scroll.
-- [ ] T11: Slice-3 QA: screenshots @4 widths; adversarial QA; Pintu review.
+- [x] T11: Slice-3 QA: screenshots @4 widths; adversarial QA; Pintu review.
 
 ## Slice 4 — Polish + ship
 - [ ] T12: SEO/meta/og per page, alt text audit, orange hex eye-verification vs live site,
