@@ -6,24 +6,28 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { Placeholder, ButtonOutline } from "./ui";
 
 export interface HeroSlide {
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
-  text: string;
-  cta: { label: string; href: string };
+  text?: string;
+  cta?: { label: string; href: string };
   scene: string;
 }
 
-/** Full-viewport hero carousel. `id` keys the Redux carousel state. */
+/** Full-viewport hero carousel. `id` keys the Redux carousel state.
+ *  textPosition "bottom" matches the home hero (bottom-anchored headline). */
 export default function HeroCarousel({
   id,
   slides,
   align = "center",
   titleSize = "text-h1",
+  textPosition = "center",
 }: {
   id: string;
   slides: HeroSlide[];
   align?: "center" | "left";
   titleSize?: string;
+  textPosition?: "center" | "bottom";
+  showCta?: boolean;
 }) {
   const dispatch = useAppDispatch();
   const index = useAppSelector((s) => s.carousel[id] ?? 0);
@@ -40,7 +44,14 @@ export default function HeroCarousel({
   const centered = align === "center";
 
   return (
-    <section className="relative h-dvh min-h-[640px] overflow-hidden" aria-roledescription="carousel">
+    <section
+      className={
+        textPosition === "bottom"
+          ? "relative h-[calc(100dvh-clamp(52px,3.9vw,75px))] min-h-[560px] overflow-hidden xl:h-[calc(100dvh-clamp(104px,7.8vw,150px))]"
+          : "relative h-dvh min-h-[640px] overflow-hidden"
+      }
+      aria-roledescription="carousel"
+    >
       {slides.map((s, i) => (
         <div
           key={s.title}
@@ -55,27 +66,35 @@ export default function HeroCarousel({
       ))}
 
       <div
-        className={`relative z-10 mx-auto flex h-full max-w-[1600px] flex-col justify-center px-[7%] pt-[10vh] ${
-          centered ? "items-center text-center" : "items-start text-left"
+        className={`relative z-10 mx-auto flex h-full max-w-[1600px] flex-col px-[7%] ${
+          textPosition === "bottom"
+            ? "items-center justify-end pb-[100px] text-center"
+            : "justify-center pt-[10vh] " + (centered ? "items-center text-center" : "items-start text-left")
         }`}
       >
-        <p key={`e-${index}`} className="text-body-lg font-medium uppercase tracking-[0.2em] text-white/80">
-          {slide.eyebrow}
-        </p>
+        {textPosition !== "bottom" && (
+          <p key={`e-${index}`} className="text-body-lg font-medium uppercase tracking-[0.2em] text-white/80">
+            {slide.eyebrow}
+          </p>
+        )}
         <h1
           key={`t-${index}`}
           className={`${titleSize} mt-4 font-medium leading-[1.15] text-white`}
         >
           {slide.title}
         </h1>
-        <p key={`x-${index}`} className="mt-6 max-w-[640px] text-body-lg leading-[1.55] text-white/90">
-          {slide.text}
-        </p>
-        <div className="mt-10">
-          <ButtonOutline href={slide.cta.href} className="!border-white !text-white hover:!bg-white hover:!text-ink">
-            {slide.cta.label}
-          </ButtonOutline>
-        </div>
+        {textPosition !== "bottom" && (
+          <p key={`x-${index}`} className="mt-6 max-w-[640px] text-body-lg leading-[1.55] text-white/90">
+            {slide.text}
+          </p>
+        )}
+        {textPosition !== "bottom" && slide.cta && (
+          <div className="mt-10">
+            <ButtonOutline href={slide.cta.href} className="!border-white !text-white hover:!bg-white hover:!text-ink">
+              {slide.cta.label}
+            </ButtonOutline>
+          </div>
+        )}
       </div>
 
       <div className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 gap-3">

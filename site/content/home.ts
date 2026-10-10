@@ -1,126 +1,157 @@
 export const heroSlides = [
   {
-    eyebrow: "Clean Energy for Everyone",
     title: "Clean Power for All",
-    text: "We advance clean energy across solar, wind, storage and hydrogen — making reliable green power accessible everywhere.",
-    cta: { label: "Discover Who We Are", href: "/about-us/brand-story" },
     scene: "solar-farm",
   },
   {
-    eyebrow: "Innovation First",
     title: "Engineering the Energy Transition",
-    text: "From PV inverters to battery storage, our R&D turns breakthroughs into products that power millions of homes.",
-    cta: { label: "Explore Innovation", href: "/about-us/brand-story" },
     scene: "panels",
   },
   {
-    eyebrow: "Global Presence",
-    title: "Powering 180+ Countries",
-    text: "Local teams, global scale — we design, deliver and service clean-energy systems on every continent.",
-    cta: { label: "Our Global Story", href: "/about-us/brand-story" },
-    scene: "factory",
-  },
-];
-
-export const stats = [
-  { value: "740", unit: "GW", label: "Power Electronic Converters Installed" },
-  { value: "NO.1", unit: "", label: "PV Inverter & ESS Bankability" },
-  { value: "6", unit: "", label: "R&D Centers Worldwide" },
-  { value: "30+", unit: "", label: "International Subsidiaries" },
-  { value: "AAA", unit: "", label: "MSCI ESG Rating 2025" },
-];
-
-export const segments = [
-  {
-    id: "home",
-    label: "For Home",
-    title: "Home Energy, Simplified",
-    text: "Rooftop solar, smart storage and EV charging in one seamless system — lower bills, total control.",
-    href: "/solution/residential-pv-ess-ev-charging-solution",
+    title: "Powering Homes Across the Globe",
     scene: "home",
   },
-  {
-    id: "business",
-    label: "For Business",
-    title: "Commercial Power That Pays",
-    text: "Cut operating costs and hit sustainability targets with C&I solar built for fast returns.",
-    href: "/solution/ci-pv-solution",
-    scene: "factory",
-  },
-  {
-    id: "utility",
-    label: "For Utility",
-    title: "Utility Scale, Proven",
-    text: "Gigawatt-scale plants with industry-leading efficiency and bankable long-term performance.",
-    href: "/solution/ci-pv-solution",
-    scene: "solar-farm",
-  },
-  {
-    id: "installers",
-    label: "Installers",
-    title: "Built for Installers",
-    text: "Lightweight hardware, fast commissioning and dedicated support — jobs done right, first time.",
-    href: "#",
+];
+
+export const home = {
+  promo: {
+    title: "SUNVOLT Ranked No.1 in Global Inverter Bankability",
+    stat: "75 GW+",
+    statLabel: "India Shipments of PV Inverters",
     scene: "panels",
   },
-  {
-    id: "distributors",
-    label: "Distributors",
-    title: "Partner With Us",
-    text: "Join a global distribution network with training, marketing support and priority supply.",
-    href: "#",
-    scene: "people",
+  intro: {
+    title: "Clean Power for All",
+    text: "We are committed to advancing clean energy across every major technology sector — solar, wind, storage, electrification and hydrogen. Our goal is to make reliable green power accessible, affordable and abundant for everyone, everywhere.",
   },
-];
-
-export const commitments = [
-  {
-    title: "Technological Innovation",
-    text: "Continuous R&D investment keeps our conversion efficiency at the industry's leading edge.",
-    icon: "bulb",
+  stats: {
+    items: [
+      { value: "740", unit: "GW", label: "Power Electronic Converters Installation", icon: "layers" },
+      { value: "NO.1", unit: "", label: "PV Inverter & ESS & PCS Bankability*¹", icon: "medal" },
+      { value: "6", unit: "", label: "R&D Centers Worldwide", icon: "factory" },
+      { value: "30+", unit: "", label: "International Subsidiaries", icon: "globe" },
+      { value: "AAA", unit: "", label: "ESG Rating in 2025*²", icon: "leaf" },
+    ],
+    footnotes: ["*¹ Source: BloombergNEF", "*² Source: MSCI ESG Research"],
+    cta: { label: "Discover Who We Are", href: "/about-us/brand-story" },
   },
-  {
-    title: "Lean Manufacturing",
-    text: "Precision production lines deliver consistent quality at global scale.",
-    icon: "factory",
+  segments: {
+    types: [
+      {
+        label: "Customer Scenarios",
+        segments: [
+          {
+            label: "For Home",
+            href: "/solution/residential-pv-ess-ev-charging-solution",
+            scene: "home",
+            links: [
+              { label: "Products & Solutions", href: "/solution/residential-pv-ess-ev-charging-solution" },
+              { label: "Cases & Stories", href: "#" },
+              { label: "Service & Support", href: "#" },
+            ],
+          },
+          {
+            label: "For Business",
+            href: "/solution/ci-pv-solution",
+            scene: "factory",
+            links: [
+              { label: "Products & Solutions", href: "/solution/ci-pv-solution" },
+              { label: "Cases & Stories", href: "#" },
+              { label: "Service & Support", href: "#" },
+            ],
+          },
+          {
+            label: "For Utility",
+            href: "/solution/ci-pv-solution",
+            scene: "solar-farm",
+            links: [
+              { label: "Products & Solutions", href: "/solution/ci-pv-solution" },
+              { label: "Cases & Stories", href: "#" },
+              { label: "Service & Support", href: "#" },
+            ],
+          },
+        ],
+      },
+      {
+        label: "Business Areas",
+        segments: [
+          {
+            label: "Installers",
+            href: "#",
+            scene: "panels",
+            links: [
+              { label: "Become an Installer", href: "#" },
+              { label: "Training & Certification", href: "#" },
+              { label: "Installer Support", href: "#" },
+            ],
+          },
+          {
+            label: "Distributors",
+            href: "#",
+            scene: "people",
+            links: [
+              { label: "Become a Distributor", href: "#" },
+              { label: "Find a Distributor", href: "#" },
+              { label: "Partner Resources", href: "#" },
+            ],
+          },
+        ],
+      },
+    ],
   },
-  {
-    title: "Global Presence",
-    text: "Local offices and service teams support customers in 180+ countries.",
-    icon: "globe",
+  why: {
+    title: "Why SUNVOLT",
+    text: "Backed by the trust of partners worldwide, we are committed to delivering excellence across technology, manufacturing and service — forging a greener tomorrow together.",
   },
-  {
-    title: "Professional Services",
-    text: "End-to-end support from design and installation to lifetime maintenance.",
-    icon: "wrench",
+  commitment: {
+    title: "Our Commitment to Innovation and Excellence",
+    cards: [
+      { title: "Technological Innovation", href: "/about-us/brand-story", scene: "panels" },
+      { title: "Lean Manufacturing", href: "#", scene: "factory" },
+      { title: "Global Presence", href: "/about-us/brand-story", scene: "dark" },
+      { title: "Professional Services", href: "#", scene: "people" },
+    ],
   },
-];
-
-export const splitRows = [
-  {
-    title: "Green Mission, Better Life",
-    text: "Sustainability guides every product we ship and every plant we help build.",
-    href: "/sustainability",
-    scene: "forest",
+  together: [
+    {
+      eyebrow: "Sustainability",
+      title: "Green Mission, Better Life",
+      href: "/sustainability",
+      scene: "forest",
+    },
+    {
+      eyebrow: "Our People",
+      title: "Greener World, Greater Us",
+      href: "/about-us/brand-story",
+      scene: "people",
+    },
+    {
+      eyebrow: "Our Service",
+      title: "Where the Sun Shines, We're Ready to Serve",
+      href: "#",
+      scene: "home",
+    },
+  ],
+  news: {
+    title: "Trending News & Events",
+    items: [
+      {
+        tag: "News",
+        title: "Countdown Begins: SUNVOLT Unveils New Innovation at Global Solar Expo",
+        date: "Oct 22, 2026",
+        scene: "panels",
+      },
+      { tag: "Events", title: "2026 MEA PV & ESS Summit", date: "Aug 21, 2026", scene: "factory" },
+      { tag: "Events", title: "2026 Southeast Asia Distributor Summit", date: "Jul 17, 2026", scene: "solar-farm" },
+      { tag: "News", title: "SUNVOLT inverters top global bankability ranking again", date: "Oct 2026", scene: "home" },
+      { tag: "Events", title: "Installer training tour across 12 cities", date: "Dec 2026", scene: "people" },
+    ],
   },
-  {
-    title: "Greener World, Greater Us",
-    text: "Our people drive the transition — engineers, installers and partners worldwide.",
-    href: "/about-us/brand-story",
-    scene: "people",
-  },
-  {
-    title: "Where the Sun Shines, We're Ready to Serve",
-    text: "A service network that answers fast and fixes faster, wherever you are.",
-    href: "#",
-    scene: "panels",
-  },
-];
-
-export const news = [
-  { tag: "News", title: "SUNVOLT inverters top global bankability ranking again", date: "Oct 2026", scene: "panels" },
-  { tag: "Event", title: "See us at the Global Solar Expo 2026", date: "Nov 2026", scene: "factory" },
-  { tag: "Event", title: "C&I storage masterclass: live webinar series", date: "Nov 2026", scene: "solar-farm" },
-  { tag: "Event", title: "Installer training tour across 12 cities", date: "Dec 2026", scene: "people" },
-  { tag: "Influencer", title: "How one factory cut energy costs 40% with solar", date: "Oct 2026", scene: "home" },
-];
+  socials: [
+    { label: "LinkedIn", href: "#" },
+    { label: "Instagram", href: "#" },
+    { label: "Facebook", href: "#" },
+    { label: "X", href: "#" },
+    { label: "YouTube", href: "#" },
+  ],
+};

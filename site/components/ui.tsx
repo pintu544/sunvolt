@@ -73,6 +73,24 @@ export function AccentBar() {
   );
 }
 
+/* ---------- Section-break motifs ---------- */
+
+/** Tall vertical orange divider — the recurring section-break motif. */
+export function VDivider({ className = "h-[220px]" }: { className?: string }) {
+  return (
+    <div className="flex justify-center" aria-hidden="true">
+      <span className={`w-[2px] bg-primary ${className}`} />
+    </div>
+  );
+}
+
+/** Small orange double-dash accent used above split-card headings. */
+export function OrangeDash() {
+  return (
+    <span className="block h-[5px] w-[34px] rounded-full bg-primary" aria-hidden="true" />
+  );
+}
+
 /* ---------- Reveal-on-scroll wrapper ---------- */
 export function Reveal({
   children,

@@ -90,6 +90,20 @@ Sources:
 - "Honors and Rewards": 4-image awards carousel. "Latest News": 1 featured + 2 side.
 - "Contact Us": ESG team email link.
 
+## Corrected homepage blueprint (pixel audit 2026-10-11, computed values from live DOM)
+- Header: row 1 STICKY (India left | wordmark centered | search/person/LOGIN right); nav row STATIC below (scrolls away). Brand orange = **#FF7900** (sampled from wordmark + back-to-top arrow).
+- Hero: 100vh video, headline text BAKED INTO VIDEO, bottom-anchored (~52px white centered, ~100px above bottom). No HTML headline.
+- Promo banner: rounded ~40px image card, ~100px side margins, below hero.
+- Pattern: orange 52px centered heading → TALL vertical orange divider (~180-250px, 2px) → content.
+- Stats: orange line-art icons (~48px) above HUGE dark numbers (~110px, #1e1e1e), unit smaller; gray labels ~18px; tiny footnotes; outline pill CTA ~300px.
+- Segments: full-bleed dark image; top tabs "Customer Scenarios | Business Areas" (white); panel = big white title + orange chevron + white link list (~28px).
+- "Why Sungrow": gray bg, ORANGE 64px heading, tall divider, gray body text.
+- Commitment: horizontal-scroll image cards (~620×600, radius ~30px), white title ~40px top-left, SOLID orange "Explore More" pill.
+- Together: big rounded cards (radius ~40px); left white panel: gray eyebrow ~20px + orange double-dash + gray heading ~56px + outline pill; right full-bleed image.
+- News: "Trending News & Events" gray ~48px; featured large card left + 2×2 grid right; white cards radius ~24px; orange tag ~20px; dark title ~24px; date.
+- Follow: "Follow SUNGROW" gray ~56px + 5 LARGE (~48px) gray social icons, wide spacing.
+- Footer: light gray bg; 5 columns (dark bold titles ~18px, gray links); bottom: orange wordmark left, divider, "© 2026 ... All Rights Reserved." + Privacy/Disclaimer.
+
 ## Gaps / unverified
 - Mega-menu dropdown content (not opened, read-only).
 - Exact primary-orange hex (not in markup).

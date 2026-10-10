@@ -4,7 +4,7 @@ import "./globals.css";
 import ReduxProvider from "@/components/ReduxProvider";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import BackToTop, { ChatButton } from "@/components/BackToTop";
+import BackToTop from "@/components/BackToTop";
 import RevealInit from "@/components/RevealInit";
 
 const manrope = Manrope({
@@ -42,7 +42,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <main className="flex-1">{children}</main>
           <Footer />
           <BackToTop />
-          <ChatButton />
           <RevealInit />
         </ReduxProvider>
       </body>

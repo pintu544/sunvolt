@@ -2,8 +2,8 @@
 
 @theme {
   /* Brand palette (from authored tokens; primary orange ~#FF6A00, verify by eye) */
-  --color-primary: #ff6a00;
-  --color-primary-dark: #e05e00;
+  --color-primary: #ff7900;
+  --color-primary-dark: #e06a00;
   --color-ink: #1e1e1e;
   --color-gray-1: #606060;
   --color-gray-2: #5c5c5c;
