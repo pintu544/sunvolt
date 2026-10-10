@@ -34,8 +34,8 @@
 - [x] T11: Slice-3 QA: screenshots @4 widths; adversarial QA; Pintu review.
 
 ## Slice 4 — Polish + ship
-- [ ] T12: SEO/meta/og per page, alt text audit, orange hex eye-verification vs live site,
+- [x] T12: SEO/meta/og per page, alt text audit, orange hex eye-verification vs live site,
       `public/assets/README.md` replacement map.
-- [ ] T13: `npm run build` + `lint` clean, Lighthouse ≥85 home desktop, final full-site
+- [x] T13: `npm run build` + `lint` clean, Lighthouse ≥85 home desktop, final full-site
       screenshot pass; fix all criticals.
-- [ ] T14: Deploy preview to Vercel (on Pintu's approval), handover notes.
+- [x] T14: Deploy preview to Vercel (on Pintu's approval), handover notes.

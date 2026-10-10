@@ -17,6 +17,20 @@ export const metadata: Metadata = {
   title: "SUNVOLT — Clean Power for All",
   description:
     "SUNVOLT delivers solar, storage and clean-energy solutions for homes, businesses and utilities.",
+  openGraph: {
+    title: "SUNVOLT — Clean Power for All",
+    description:
+      "Solar, storage and clean-energy solutions for homes, businesses and utilities.",
+    type: "website",
+    locale: "en_IN",
+    siteName: "SUNVOLT",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SUNVOLT — Clean Power for All",
+    description:
+      "Solar, storage and clean-energy solutions for homes, businesses and utilities.",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
