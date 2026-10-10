@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand palette (from authored tokens; primary orange ~#FF6A00, verify by eye) */
+  --color-primary: #ff6a00;
+  --color-primary-dark: #e05e00;
+  --color-ink: #1e1e1e;
+  --color-gray-1: #606060;
+  --color-gray-2: #5c5c5c;
+  --color-divider: #ebebeb;
+  --color-disabled: #cccccc;
+  --color-glass: #3f3f60;
+
+  /* Fluid type scale — exact px @1920, continuous vw scaling like the source */
+  --text-display: clamp(2rem, 3.125vw, 3.75rem); /* 60 */
+  --text-h1: clamp(1.75rem, 2.708vw, 3.25rem); /* 52 */
+  --text-h2: clamp(1.5rem, 1.875vw, 2.25rem); /* 36 */
+  --text-h3: clamp(1.375rem, 1.667vw, 2rem); /* 32 */
+  --text-lead: clamp(1.125rem, 1.25vw, 1.5rem); /* 24 */
+  --text-body-lg: clamp(1rem, 1.042vw, 1.25rem); /* 20 */
+  --text-body: clamp(0.95rem, 0.9375vw, 1.125rem); /* 18 */
+  --text-small: clamp(0.8rem, 0.729vw, 0.875rem); /* 14 */
+
+  --radius-pill: 9999px;
+  --shadow-card: 0 20px 60px 0 rgba(0, 0, 0, 0.08);
+
+  --font-sans: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Entrance reveal (IntersectionObserver adds .is-visible) */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
