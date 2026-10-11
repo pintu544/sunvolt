@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { selectTab, prev, next } from "@/store/store";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { Placeholder, Reveal, SectionHeading, AccentBar, ButtonOutline } from "./ui";
+import { Placeholder, Reveal, SectionHeading, ButtonOutline } from "./ui";
 
 /* ---------- Sticky sub-nav with scroll spy ---------- */
 export function StickySubNav({ items }: { items: { label: string; href: string }[] }) {
@@ -61,7 +61,6 @@ export function TargetCards({
   return (
     <section id="overview" className="mx-auto max-w-[1600px] scroll-mt-[170px] px-[3%] py-[clamp(3rem,3.125vw,3.75rem)]">
       <Reveal>
-        <AccentBar />
         <h2 className="text-h2 font-medium leading-[1.2] text-center text-gray-1">Our Climate Targets</h2>
       </Reveal>
       <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -95,8 +94,7 @@ export function StrategyTabs({
     <section id="strategy" className="scroll-mt-[170px] bg-[#fafafa]">
       <div className="mx-auto max-w-[1600px] px-[3%] py-[clamp(3rem,3.125vw,3.75rem)]">
         <Reveal>
-          <AccentBar />
-          <h2 className="text-h2 font-medium leading-[1.2] text-center text-gray-1">
+            <h2 className="text-h2 font-medium leading-[1.2] text-center text-gray-1">
             Our Sustainability Strategy
           </h2>
         </Reveal>
@@ -162,7 +160,6 @@ export function ReportsSection({
   return (
     <section id="reports" className="mx-auto max-w-[1600px] scroll-mt-[170px] px-[3%] py-[clamp(3rem,3.125vw,3.75rem)]">
       <Reveal>
-        <AccentBar />
         <h2 className="text-h2 font-medium leading-[1.2] text-center text-gray-1">
           Latest Reports & Policies
         </h2>

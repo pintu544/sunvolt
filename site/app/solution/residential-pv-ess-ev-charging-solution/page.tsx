@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import HeroCarousel from "@/components/Hero";
-import Accordion from "@/components/Accordion";
-import { ScenarioTabs, ProductCarousel } from "@/components/Solution";
+import { ScenarioTabs, ProductCarousel, FeatureSections } from "@/components/Solution";
 import { NewsCards } from "@/components/Sections";
 import ContactForm from "@/components/ContactForm";
 import { residentialSolution } from "@/content/solutions";
@@ -17,7 +16,7 @@ export default function ResidentialSolutionPage() {
   return (
     <>
       <HeroCarousel id="res-hero" slides={[c.hero]} align="left" titleSize="text-display" />
-      <Accordion id="res-accordion" heading={c.accordionHeading} items={c.accordion} />
+      <FeatureSections heading={c.accordionHeading} items={c.accordion} />
       <ScenarioTabs id="res-scenarios" heading={c.scenariosHeading} scenarios={c.scenarios} />
       <ProductCarousel id="res-products" heading={c.productsHeading} products={c.products} />
       <NewsCards title="Latest News & Events" items={c.news} />

@@ -2,7 +2,7 @@
 
 import { toggleItem } from "@/store/store";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { Placeholder, Reveal, AccentBar } from "./ui";
+import { Placeholder, Reveal } from "./ui";
 
 export interface AccordionItem {
   title: string;
@@ -27,7 +27,6 @@ export default function Accordion({
   return (
     <section className="mx-auto max-w-[1600px] px-[3%] py-[clamp(3rem,3.125vw,3.75rem)]">
       <Reveal>
-        <AccentBar />
         <h2 className="text-h2 font-medium leading-[1.2] text-center text-gray-1">
           {heading}
         </h2>

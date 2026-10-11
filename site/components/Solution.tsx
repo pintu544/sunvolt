@@ -2,7 +2,46 @@
 
 import { selectTab, prev, next } from "@/store/store";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { Placeholder, Reveal, AccentBar, ButtonPrimary, ButtonOutline } from "./ui";
+import { Placeholder, Reveal, ButtonPrimary, ButtonOutline } from "./ui";
+
+/* ---------- Feature sections: centered H2 + text + big rounded banner (matches reference) ---------- */
+export interface FeatureItem {
+  title: string;
+  text: string;
+  scene: string;
+}
+
+export function FeatureSections({ heading, items }: { heading: string; items: FeatureItem[] }) {
+  return (
+    <>
+      <section className="mx-auto max-w-[1600px] px-[3%] pt-[clamp(3rem,5vw,6rem)] text-center">
+        <Reveal>
+          <h2 className="font-medium leading-[1.2] text-gray-1" style={{ fontSize: "clamp(36px, 2.9vw, 56px)" }}>
+            {heading}
+          </h2>
+        </Reveal>
+      </section>
+      {items.map((item) => (
+        <section key={item.title} className="mx-auto max-w-[1920px] px-[clamp(16px,5.2vw,100px)] py-[clamp(2.5rem,4vw,5rem)] text-center">
+          <Reveal>
+            <h2 className="font-medium leading-[1.2] text-gray-1" style={{ fontSize: "clamp(36px, 2.9vw, 56px)" }}>
+              {item.title}
+            </h2>
+            <p className="mx-auto mt-6 max-w-[1000px] text-body-lg leading-[1.8] text-gray-2">{item.text}</p>
+          </Reveal>
+          <Reveal className="mt-10">
+            <Placeholder
+              scene={item.scene}
+              label=""
+              rounded="rounded-[40px]"
+              className="h-[clamp(320px,36vw,640px)]"
+            />
+          </Reveal>
+        </section>
+      ))}
+    </>
+  );
+}
 
 /* ---------- Scenario tabs (image-top cards) ---------- */
 export interface Scenario {
@@ -28,7 +67,6 @@ export function ScenarioTabs({
     <section className="bg-[#fafafa]">
       <div className="mx-auto max-w-[1600px] px-[3%] py-[clamp(3rem,3.125vw,3.75rem)]">
         <Reveal>
-          <AccentBar />
           <h2 className="text-h2 font-medium leading-[1.2] text-center text-gray-1">{heading}</h2>
         </Reveal>
         <Reveal className="mt-8 flex flex-wrap justify-center gap-3" >
@@ -96,7 +134,6 @@ export function ProductCarousel({
   return (
     <section id="products" className="mx-auto max-w-[1600px] px-[3%] py-[clamp(3rem,3.125vw,3.75rem)]">
       <Reveal>
-        <AccentBar />
         <h2 className="text-h2 font-medium leading-[1.2] text-center text-gray-1">{heading}</h2>
       </Reveal>
       <div className="relative mt-12">
