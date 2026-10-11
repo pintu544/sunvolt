@@ -98,7 +98,7 @@ export function StatsBand() {
         {s.items.map((item) => (
           <Reveal key={item.value} className="flex flex-col items-center text-center">
             <StatIcon kind={item.icon} />
-            <p className="mt-5 font-light text-ink" style={{ fontSize: "clamp(56px, 5.7vw, 110px)", lineHeight: 1.1 }}>
+            <p className="mt-5 font-light text-[#606060]" style={{ fontSize: "clamp(56px, 5.7vw, 110px)", lineHeight: 1.1 }}>
               {item.value}
               {item.unit && (
                 <span className="ml-2 align-baseline text-gray-1" style={{ fontSize: "clamp(20px, 2vw, 38px)" }}>
@@ -136,6 +136,9 @@ export function SegmentTabs() {
   const tab = useAppSelector((st) => st.tabs["home-segtype"] ?? 0);
   const seg = useAppSelector((st) => st.tabs["home-segment"] ?? 0);
   const active = s.types[tab].segments[seg] ?? s.types[tab].segments[0];
+  // Flat list of every segment (matches the reference bottom bar)
+  const all = s.types.flatMap((t, ti) => t.segments.map((g, gi) => ({ ...g, ti, gi })));
+  const activeFlat = all.findIndex((a) => a.ti === tab && a.gi === seg);
 
   return (
     <section className="relative overflow-hidden">
@@ -143,7 +146,7 @@ export function SegmentTabs() {
         <Placeholder scene={active.scene} label="" rounded="rounded-none" className="h-full" />
         <div className="absolute inset-0 bg-black/45" />
       </div>
-      <div className="relative mx-auto flex min-h-[clamp(560px,72vh,900px)] max-w-[1920px] flex-col px-[3%] py-12">
+      <div className="relative mx-auto flex min-h-[clamp(560px,72vh,900px)] max-w-[1920px] flex-col px-[3%] pb-10 pt-12">
         {/* type tabs */}
         <div role="tablist" aria-label="Segment type" className="flex justify-center gap-10">
           {s.types.map((t, i) => (
@@ -161,22 +164,6 @@ export function SegmentTabs() {
             >
               {t.label}
               <span className={`mt-1 block h-[2px] bg-white transition-transform ${tab === i ? "scale-x-100" : "scale-x-0"}`} />
-            </button>
-          ))}
-        </div>
-        {/* segment pills */}
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
-          {s.types[tab].segments.map((g, i) => (
-            <button
-              key={g.label}
-              onClick={() => dispatch(selectTab({ id: "home-segment", index: i }))}
-              className={`rounded-pill border px-6 py-2.5 text-body font-medium transition-colors ${
-                seg === i
-                  ? "border-white bg-white text-ink"
-                  : "border-white/50 text-white hover:border-white"
-              }`}
-            >
-              {g.label}
             </button>
           ))}
         </div>
@@ -198,6 +185,28 @@ export function SegmentTabs() {
               ))}
             </ul>
           </Reveal>
+        </div>
+        {/* frosted-glass bottom selector bar (matches reference) */}
+        <div className="mx-auto w-full max-w-[1400px]">
+          <div className="flex items-stretch justify-between rounded-[18px] bg-white/35 px-2 py-2 backdrop-blur-xl">
+            {all.map((a, i) => (
+              <button
+                key={a.label}
+                onClick={() => {
+                  dispatch(selectTab({ id: "home-segtype", index: a.ti }));
+                  dispatch(selectTab({ id: "home-segment", index: a.gi }));
+                }}
+                className={`relative flex-1 whitespace-nowrap px-4 py-4 text-center text-body font-medium transition-colors ${
+                  i === activeFlat ? "rounded-[14px] bg-white text-ink shadow-sm" : "text-ink/80 hover:text-ink"
+                }`}
+              >
+                {a.label}
+                {i < all.length - 1 && i !== activeFlat && i + 1 !== activeFlat && (
+                  <span className="absolute right-0 top-1/2 h-6 w-px -translate-y-1/2 bg-ink/25" />
+                )}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -235,7 +244,7 @@ export function CommitmentCards() {
         <SectionHeading className="text-gray-1">{c.title}</SectionHeading>
       </Reveal>
       <Reveal className="mt-12">
-        <div className="flex gap-6 overflow-x-auto px-[3%] pb-4" style={{ scrollbarWidth: "none" }}>
+        <div className="flex gap-6 overflow-x-auto pb-4 pl-[3%] pr-0" style={{ scrollbarWidth: "none" }}>
           {c.cards.map((card) => (
             <article
               key={card.title}

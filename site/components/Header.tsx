@@ -23,15 +23,22 @@ export default function Header() {
   const dispatch = useAppDispatch();
   const mobileOpen = useAppSelector((s) => s.ui.mobileMenuOpen);
   const [openDrop, setOpenDrop] = useState<string | null>(null);
+  const [mobileSub, setMobileSub] = useState<string | null>(null);
+
+  const closeMenu = () => {
+    setMobileSub(null);
+    dispatch(closeMobileMenu());
+  };
 
   return (
     <>
       {/* Row 1: STICKY — region (left) | wordmark (center) | tools (right) */}
       <div className="sticky top-0 z-50 bg-white">
         <div className="mx-auto grid h-[clamp(52px,3.9vw,75px)] max-w-[1920px] grid-cols-[1fr_auto_1fr] items-center px-[3%]">
+          {/* Region: text label on desktop, flag only on mobile (matches reference) */}
           <button className="flex items-center gap-2 justify-self-start text-gray-1" style={{ fontSize: "clamp(13px, 1.04vw, 20px)" }}>
             <span className="inline-block h-[14px] w-[22px] rounded-[2px] bg-gradient-to-b from-[#ff9933] via-white to-[#138808]" />
-            India
+            <span className="hidden xl:inline">India</span>
           </button>
           <Wordmark />
           <div className="hidden items-center gap-5 justify-self-end text-gray-1 xl:flex">
@@ -56,43 +63,107 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile hamburger (in row 1, right) */}
-        <button
-          className="absolute right-[3%] top-1/2 -translate-y-1/2 py-1 xl:hidden"
-          aria-label="Open menu"
-          onClick={() => dispatch(toggleMobileMenu())}
-        >
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M3 6h18M3 12h18M3 18h18" />
-          </svg>
-        </button>
+        {/* Mobile tools: search + hamburger (right), like the reference */}
+        <div className="absolute right-[3%] top-1/2 flex -translate-y-1/2 items-center gap-4 text-ink xl:hidden">
+          <button aria-label="Search" className="hover:text-primary">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <circle cx="11" cy="11" r="7" />
+              <path d="m20 20-3.5-3.5" />
+            </svg>
+          </button>
+          <button aria-label="Open menu" onClick={() => dispatch(toggleMobileMenu())}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M3 6h18M3 12h18M3 18h18" />
+            </svg>
+          </button>
+        </div>
 
-        {/* Mobile menu */}
+        {/* Mobile menu: full-screen drill-down panel (matches reference) */}
         {mobileOpen && (
-          <div className="border-t border-divider bg-white xl:hidden">
-            <nav className="flex flex-col px-6 py-4" aria-label="Mobile">
-              {mainNav.map((item) => (
-                <div key={item.label}>
-                  <Link
-                    href={item.href}
-                    onClick={() => dispatch(closeMobileMenu())}
-                    className="block border-b border-divider py-3 text-body font-medium text-ink"
-                  >
-                    {item.label}
-                  </Link>
-                  {item.children?.map((c) => (
-                    <Link
-                      key={c.label}
-                      href={c.href}
-                      onClick={() => dispatch(closeMobileMenu())}
-                      className="block py-2 pl-4 text-body text-gray-1"
+          <div className="fixed inset-0 z-[60] flex flex-col bg-white xl:hidden">
+            {/* Close */}
+            <div className="flex h-[clamp(52px,3.9vw,75px)] items-center justify-end px-[5%]">
+              <button aria-label="Close menu" onClick={closeMenu} className="text-primary">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M6 6l12 12M18 6 6 18" />
+                </svg>
+              </button>
+            </div>
+
+            {mobileSub === null ? (
+              /* Main list */
+              <nav className="flex-1 overflow-y-auto px-[6%]" aria-label="Mobile">
+                {mainNav.map((item) =>
+                  item.children ? (
+                    <button
+                      key={item.label}
+                      onClick={() => setMobileSub(item.label)}
+                      className="flex w-full items-center justify-between border-b border-divider py-4 text-left text-[17px] font-normal text-ink"
                     >
-                      {c.label}
+                      {item.label}
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                        <path d="m9 6 6 6-6 6" />
+                      </svg>
+                    </button>
+                  ) : (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      onClick={closeMenu}
+                      className="flex w-full items-center justify-between border-b border-divider py-4 text-left text-[17px] font-normal text-ink"
+                    >
+                      {item.label}
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                        <path d="m9 6 6 6-6 6" />
+                      </svg>
                     </Link>
-                  ))}
-                </div>
-              ))}
-            </nav>
+                  )
+                )}
+              </nav>
+            ) : (
+              /* Submenu drill-down */
+              (() => {
+                const item = mainNav.find((i) => i.label === mobileSub)!;
+                return (
+                  <nav className="flex-1 overflow-y-auto px-[6%]" aria-label="Mobile submenu">
+                    <div className="flex items-center gap-3 border-b border-divider py-4">
+                      <button aria-label="Back" onClick={() => setMobileSub(null)} className="text-ink">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="m14 6-6 6 6 6" />
+                        </svg>
+                      </button>
+                    </div>
+                    <Link
+                      href={item.href}
+                      onClick={closeMenu}
+                      className="flex items-center gap-1 border-b border-divider py-4 text-[17px] font-normal text-ink"
+                    >
+                      {item.label}
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                        <path d="m9 6 6 6-6 6" />
+                      </svg>
+                    </Link>
+                    {item.children?.map((c) => (
+                      <Link
+                        key={c.label}
+                        href={c.href}
+                        onClick={closeMenu}
+                        className="block border-b border-divider py-4 pl-2 text-[16px] font-normal text-gray-1"
+                      >
+                        {c.label}
+                      </Link>
+                    ))}
+                  </nav>
+                );
+              })()
+            )}
+
+            {/* LOGIN pill */}
+            <div className="flex justify-center pb-10 pt-4">
+              <button className="w-[42%] rounded-full bg-[#f1f1f1] py-3.5 text-[15px] font-medium tracking-[0.08em] text-gray-1">
+                LOGIN
+              </button>
+            </div>
           </div>
         )}
       </div>
