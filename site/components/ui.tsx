@@ -120,6 +120,18 @@ const SCENES: Record<string, [string, string]> = {
   dark: ["#101828", "#3f3f60"],
 };
 
+/* Dummy imagery (generated, similar in spirit to the reference site's photography) */
+const DUMMY_IMAGES: Record<string, string> = {
+  "solar-farm": "/dummy/solar-farm.jpg",
+  panels: "/dummy/panels.jpg",
+  home: "/dummy/home.jpg",
+  factory: "/dummy/factory.jpg",
+  forest: "/dummy/forest.jpg",
+  product: "/dummy/product.jpg",
+  people: "/dummy/people.jpg",
+  dark: "/dummy/dark.jpg",
+};
+
 export function Placeholder({
   scene = "solar-farm",
   label,
@@ -132,6 +144,25 @@ export function Placeholder({
   rounded?: string;
 }) {
   const [bg, accent] = SCENES[scene] ?? SCENES["solar-farm"];
+  const dummy = DUMMY_IMAGES[scene];
+  if (dummy) {
+    return (
+      <div role="img" aria-label={label} className={`relative overflow-hidden ${rounded} ${className}`}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={dummy}
+          alt={label || scene}
+          loading="lazy"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        {label ? (
+          <span className="absolute bottom-3 left-4 text-small text-white font-medium drop-shadow">
+            {label}
+          </span>
+        ) : null}
+      </div>
+    );
+  }
   return (
     <div
       role="img"
