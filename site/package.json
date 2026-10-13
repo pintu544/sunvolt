@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "knip": "knip"
+    "knip": "knip",
+    "prepare": "lefthook install",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.13.0",
@@ -17,6 +19,8 @@
     "react-redux": "^9.3.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^21.2.3",
+    "@commitlint/config-conventional": "^21.2.3",
     "@tailwindcss/turbopack": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -24,6 +28,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.4.0",
     "knip": "^6.41.0",
+    "lefthook": "^2.2.2",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
